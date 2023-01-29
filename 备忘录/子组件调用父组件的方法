@@ -1,0 +1,19 @@
+//子组件声明按钮会触发welcome
+Vue.component('welcome-button', {
+  template: `
+    <button v-on:click="$emit('welcome')">
+      Click me to be welcomed
+    </button>
+  `
+})
+
+
+//父组件在使用子组件的时候，将welcome事件绑定到自己的sayHi()上
+<div id="emit-example-simple">
+  <welcome-button v-on:welcome="sayHi"></welcome-button>
+</div>
+
+子组件通过this.$emit('事件名称', {a:1,b:2})派发事件；
+父组件利用v-on将事件名称和函数绑定起来，从而对事件进行监听，实现参数的传递
+
+vue中如果父组件想调用子组件的方法，可以在子组件中加上ref，然后通过this.$refs.ref.method调用

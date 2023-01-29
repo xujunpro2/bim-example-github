@@ -1,0 +1,74 @@
+//v-on 简写为：@ 简写只能绑定一个事件
+<button v-on='{mouseenter:onEnter,mouseleave:onOut}' v-on:click="onClick">点我</button>
+<form v-on:submit="onSubmit($event)">
+
+事件修饰符
+.stop  阻止事件继续传播
+.prevent 事件不再重载页面  主要在submit上用
+.capture 使用事件捕获模式,即元素自身触发的事件先在此处处理，然后才交由内部元素进行处理
+.self 只当在 event.target 是当前元素自身时触发处理函数
+.once 事件将只会触发一次
+.passive 告诉浏览器你不想阻止事件的默认行为
+<!-- 点击事件将只会触发一次 -->
+<a v-on:click.once="doThis"></a>
+
+
+//v-text
+<span v-text="myText"></span>
+
+//v-html
+<div v-html="myHtml"></div>
+
+//v-if
+<a v-if="ok">yes</a>   (data里定义的ok为true，则显示。否则，不会渲染这个元素)
+//v-else
+<a v-if="ok">yes</a>
+<a v-else>No</a>
+
+//v-show
+<h1 v-show="ok">hello world</h1>
+也是用于根据条件展示元素。和v-if不同的是，if是创建或销毁dom。v-show只是简单的切换css的dispaly属性。
+
+//v-for
+<div v-for="(item,index) in items" :key="index"></div>   //使用in，index是一个可选参数，表示当前项的索引
+<div v-for="item of items"></div>   //使用of
+注意：当v-for和v-if同处于一个节点时，v-for的优先级比v-if更高。这意味着v-if将运行在每个v-for循环中
+
+<!-- 对象遍历 -->
+<div v-for="(value, key, index) in object">
+    {{ index }}. {{ key }} - {{ value }}
+</div>
+
+
+//v-bind 简写 ：
+//使用style绑定局部样式 ,css名称要驼峰写法
+<p ref="p1" :style="{color:color}">vue通过ref获得css</p>
+
+<!--当data里面定义的isActive等于true时，is-active这个类才会被添加起作用-->
+<!--当data里面定义的hasError等于true时，text-danger这个类才会被添加起作用-->
+<div :class="{'is-active':isActive, 'text-danger':hasError}"></div>
+
+<!--数组语法：errorClass在data对应的类一定会添加-->
+<!--is-active是对象语法，根据activeClass对应的取值决定是否添加-->
+<p :class="[{'is-active':activeClass},errorClass]">12345</p>
+
+<!--在vue实例的data中定义了classObject对象，这个对象里面是所有类名及其真值-->
+<!--当里面的类的值是true时会被渲染-->
+<div :class="classObject">12345</div>
+data: {
+        classObject:{
+            'is-active': false,
+            'text-danger':true
+        }           
+}
+
+//v-model
+这个指令用于在表单上创建双向数据绑定。
+v-model会忽略所有表单元素的value、checked、selected特性的初始值。因为它选择Vue实例数据做为具体的值。
+<input v-model="somebody">
+
+v-model修饰符
+<input v-model.lazy="msg">  change之后才变
+<input v-model.number="msg"> 自动将用户的输入值转化为数值类型
+<input v-model.trim="msg">  自动过滤用户输入的首尾空格
+

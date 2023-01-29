@@ -1,0 +1,9 @@
+props: {
+  String,
+  Number,
+  Boolean,
+  Array,
+  Object,
+  Function,
+  Promise 
+}

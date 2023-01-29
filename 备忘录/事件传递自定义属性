@@ -1,0 +1,9 @@
+<button @click="sayBye($event)" data-msg="Bye">say bye</button>
+
+methods: {
+    sayBye(e){
+        //let msg=e.target.getAttribute('data-msg');
+        let msg=e.target.dataset.msg;
+        console.log(msg)
+    }
+}
