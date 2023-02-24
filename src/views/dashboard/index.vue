@@ -63,8 +63,11 @@
            
         </el-row>
         <el-row :gutter="10">
-             <el-col :span="6">
+            <el-col :span="6">
                 <screen image="screens/3.jpg" title="构件拾取" href="Pick" ></screen>
+            </el-col>
+            <el-col :span="6">
+                <screen image="screens/pickFilter.png" title="构件拾取过滤" href="PickFilter" ></screen>
             </el-col>
             <el-col :span="6">
                 <screen image="screens/4.jpg" title="构件聚焦" href="ZoomTo" ></screen>
@@ -72,11 +75,11 @@
             <el-col :span="6">
                 <screen image="screens/5.png" title="构件隐藏/显示" href="Visible" ></screen>
             </el-col>
+        </el-row>
+        <el-row :gutter="10">
             <el-col :span="6">
                 <screen image="screens/6.png" title="设置构件颜色" href="Color" ></screen>
             </el-col>
-        </el-row>
-        <el-row :gutter="10">
             <el-col :span="6">
                 <screen image="screens/7.png" title="设置相机位置" href="CameraPosition" ></screen>
             </el-col>
@@ -86,16 +89,19 @@
             <el-col :span="6">
                 <screen image="screens/15.png" title="方向指示器" href="NavCube" ></screen>
             </el-col>
+        </el-row>
+        <el-row :gutter="10">
             <el-col :span="6">
                 <screen image="screens/clip.JPG" title="剖切" href="Clip" ></screen>
             </el-col>
-        </el-row>
-        <el-row :gutter="10">
             <el-col :span="6">
                 <screen image="screens/BoxClip.png" title="剖切盒" href="FirstPerson" ></screen>
             </el-col>
             <el-col :span="6">
                 <screen image="screens/gltf.png" title="融合GLTF模型" href="GLTF" ></screen>
+            </el-col>
+            <el-col :span="6">
+                <screen image="screens/map.png" title="导航图" href="Map" ></screen>
             </el-col>
         </el-row>
         
@@ -163,6 +169,12 @@
             </el-col>
             <el-col :span="6">
                 <screen image="screens/explodeModel.png" title="模型爆炸" href="ExplodeModel" ></screen>
+            </el-col>
+            <el-col :span="6">
+                <screen image="screens/CircleWave.png" title="坐标涟漪" href="CircleWave" ></screen>
+            </el-col>
+            <el-col :span="6">
+                <screen image="screens/FlyLine.png" title="粒子飞行线" href="FlyLine" ></screen>
             </el-col>
         </el-row>
 

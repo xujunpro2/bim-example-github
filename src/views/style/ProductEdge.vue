@@ -19,7 +19,7 @@
                     viewer.addPlugin(plugin);
                 }
                 //设置边框可以重复调用，每次都会自动先清除边框并根据场景重新计算并绘制构件边框，该过程是异步的
-                plugin.setEdge();
+                plugin.enabelEdge();
             }   
         },
         //清除边框
@@ -33,7 +33,7 @@
                     plugin = new BIMI.EdgePlugin();
                     viewer.addPlugin(plugin);
                 }
-                plugin.clearEdge();
+                plugin.disabelEdge();
             }   
         }
 
@@ -81,7 +81,7 @@ export default {
                     viewer.addPlugin(plugin);
                 }
                 //设置边框可以重复调用，每次都会自动先清除边框并根据场景重新计算并绘制构件边框，该过程是异步的
-                plugin.setEdge();
+                plugin.enabelEdge();
             }   
         },
         //清除边框
@@ -95,7 +95,7 @@ export default {
                     plugin = new BIMI.EdgePlugin();
                     viewer.addPlugin(plugin);
                 }
-                plugin.clearEdge();
+                plugin.disabelEdge();
             }   
         }
     },

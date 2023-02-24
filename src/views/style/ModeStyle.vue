@@ -5,8 +5,6 @@
             <br/>
             <el-button size="mini" @click="onTransparent">透明模式</el-button>
             <p/>
-            <el-button size="mini" @click="onEdge">边框模式</el-button>计算量大，耐心等待
-            <p/>
             <el-button size="mini" @click="onReset">原始模式</el-button>
         </div>
         <div id="containerDiv" ></div>

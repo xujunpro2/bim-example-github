@@ -165,6 +165,12 @@ export const constantRoutes = [
                 meta: { title: '构件拾取' }
             },
             {
+                path: 'pickFilter',
+                name: 'PickFilter',
+                component: () => import('@/views/basic/PickFilter'),
+                meta: { title: '构件拾取过滤' }
+            },
+            {
                 path: 'zoomTo',
                 name: 'ZoomTo',
                 component: () => import('@/views/basic/ZoomTo'),
@@ -235,6 +241,12 @@ export const constantRoutes = [
                 name: 'Annotation',
                 component: () => import('@/views/basic/Annotation'),
                 meta: { title: '批注' }
+            },
+            {
+                path: 'map',
+                name: 'Map',
+                component: () => import('@/views/basic/Map'),
+                meta: { title: '导航图' }
             },
         ]
     },
@@ -371,6 +383,18 @@ export const constantRoutes = [
                 name: 'ExplodeModel',
                 component: () => import('@/views/animation/ExplodeModel'),
                 meta: { title: '模型爆炸' }
+            },
+            {
+                path: 'circleWave',
+                name: 'CircleWave',
+                component: () => import('@/views/animation/CircleWave'),
+                meta: { title: '坐标涟漪' }
+            },
+            {
+                path: 'flyLine',
+                name: 'FlyLine',
+                component: () => import('@/views/animation/FlyLine'),
+                meta: { title: '粒子飞行线' }
             }
         ]
     },
@@ -503,7 +527,13 @@ export const constantRoutes = [
                 path: 'video',
                 name: 'Video',
                 component: () => import('@/views/media/Video'),
-                meta: { title: '视频播放' }
+                meta: { title: '本地视频' }
+            },
+            {
+                path: 'hls',
+                name: 'HLS',
+                component: () => import('@/views/media/HLS'),
+                meta: { title: 'HLS流视频' }
             }
         ]
     },
