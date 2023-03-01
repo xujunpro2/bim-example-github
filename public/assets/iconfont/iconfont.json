@@ -6,6 +6,13 @@
   "description": "BIMI项目使用到的iconfont",
   "glyphs": [
     {
+      "icon_id": "499219",
+      "name": "map-marker",
+      "font_class": "mapmarker",
+      "unicode": "e946",
+      "unicode_decimal": 59718
+    },
+    {
       "icon_id": "677594",
       "name": "设置",
       "font_class": "shezhi",

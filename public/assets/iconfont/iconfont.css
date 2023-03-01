@@ -1,8 +1,8 @@
 @font-face {
   font-family: "iconfont"; /* Project id 2579048 */
-  src: url('iconfont.woff2?t=1640934795065') format('woff2'),
-       url('iconfont.woff?t=1640934795065') format('woff'),
-       url('iconfont.ttf?t=1640934795065') format('truetype');
+  src: url('iconfont.woff2?t=1677467430421') format('woff2'),
+       url('iconfont.woff?t=1677467430421') format('woff'),
+       url('iconfont.ttf?t=1677467430421') format('truetype');
 }
 
 .iconfont {
@@ -11,6 +11,10 @@
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-mapmarker:before {
+  content: "\e946";
 }
 
 .icon-shezhi:before {

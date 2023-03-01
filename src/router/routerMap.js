@@ -264,6 +264,12 @@ export const constantRoutes = [
                 meta: { title: '二维标签' }
             },
             {
+                path: 'htmlIconLabel',
+                name: 'HtmlIconLabel',
+                component: () => import('@/views/label/HtmlIconLabel'),
+                meta: { title: 'iconfont标签' }
+            },
+            {
                 path: 'htmlAnchorLabel',
                 name: 'HtmlAnchorLabel',
                 component: () => import('@/views/label/HtmlAnchorLabel'),
@@ -395,6 +401,12 @@ export const constantRoutes = [
                 name: 'FlyLine',
                 component: () => import('@/views/animation/FlyLine'),
                 meta: { title: '粒子飞行线' }
+            },
+            {
+                path: 'fence',
+                name: 'Fence',
+                component: () => import('@/views/animation/Fence'),
+                meta: { title: '电子围栏' }
             }
         ]
     },

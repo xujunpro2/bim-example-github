@@ -130,6 +130,9 @@
             <el-col :span="6">
                 <screen image="screens/billboard.png" title="广告牌" href="Billboard" ></screen>
             </el-col>
+            <el-col :span="6">
+                <screen image="screens/iconfont.png" title="iconfont标签" href="HtmlIconLabel" ></screen>
+            </el-col>
         </el-row>
 
         <div class="group-title col_80 px32 f_bold">样式</div>
@@ -175,6 +178,11 @@
             </el-col>
             <el-col :span="6">
                 <screen image="screens/FlyLine.png" title="粒子飞行线" href="FlyLine" ></screen>
+            </el-col>
+        </el-row>
+        <el-row :gutter="10">
+            <el-col :span="6">
+                <screen image="screens/fence.png" title="电子围栏" href="Fence" ></screen>
             </el-col>
         </el-row>
 
