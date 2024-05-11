@@ -61,9 +61,9 @@ export default {
             }
             
             //左边灯泡设置暖黄光
-            plugin.addBlooms('bloom1',1,[3505],'#ffba7a');
+            plugin.addBlooms('bloom1',1,[103505],'#ffba7a');
             //右边灯泡设置淡蓝光
-            plugin.addBlooms('bloom2',1,[4026],'#7ae7ff');
+            plugin.addBlooms('bloom2',1,[104026],'#7ae7ff');
             //开启辉光特效
             plugin.start();
             //关闭辉光特效可调用plugin.stop();
@@ -73,7 +73,7 @@ export default {
         
         this.$nextTick(()=>{
             var dom = document.getElementById('containerDiv');
-            let viewer = new BIMI.BimViewer(dom,{grid:false,debug:true,loading:true,enableInstancedMesh:true});
+            let viewer = new BIMI.BimViewer(dom,{grid:false,debug:true,loading:true,antiAliasing:'smaa'});
             viewer.load('datas/双臂路灯/bim.bin');
             viewer.on(BIMI.ViewerEvent.LOADED,event=>{
                 this.addBloom();

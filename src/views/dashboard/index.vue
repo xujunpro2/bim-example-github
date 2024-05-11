@@ -12,21 +12,21 @@
                 <screen image="screens/examples/机械模型.png" title="机电房设备.rvt" href="Machine" ></screen>
             </el-col>
             <el-col :span="6">
-                <screen image="screens/examples/科技感着色.png" title="KZJ厂区一期.rvt" href="KZJ" ></screen>
+                <screen image="screens/examples/科技感着色.png" title="某厂区.rvt" href="KZJ" ></screen>
             </el-col>
         </el-row>
         <el-row :gutter="10">
             <el-col :span="6">
-                <screen image="screens/examples/IDC机房.png" title="上海电信IDC机房.rvt" href="IDC" ></screen>
+                <screen image="screens/examples/IDC机房.png" title="某电信IDC机房.rvt" href="IDC" ></screen>
             </el-col>
             <el-col :span="6">
-                <screen image="screens/examples/厦门天马路地下管廊.png" title="厦门天马路地下管廊.rvt" href="Pipe" ></screen>
+                <screen image="screens/examples/厦门天马路地下管廊.png" title="某地下管廊.rvt" href="Pipe" ></screen>
             </el-col>
             <el-col :span="6">
                 <screen image="screens/examples/TeKa.png" title="TeKa中心.ifc" href="TeKa" ></screen>
             </el-col>
             <el-col :span="6">
-                <screen image="screens/examples/奔牛水利枢纽工程.png" title="奔牛水利枢纽工程.ifc" href="BenLiu" ></screen>
+                <screen image="screens/examples/奔牛水利枢纽工程.png" title="某水利枢纽工程.ifc" href="BenLiu" ></screen>
             </el-col>
         </el-row>
          <el-row :gutter="10">
@@ -34,13 +34,13 @@
                 <screen image="screens/examples/一期地下室机电.png" title="一期地下室机电.rvt" href="ZouMeng" ></screen>
             </el-col>
             <el-col :span="6">
-                <screen image="screens/examples/学生宿舍机电.png" title="学生宿舍机电模型.rvt" href="Student" ></screen>
+                <screen image="screens/examples/学生宿舍机电.png" title="某机电模型.rvt" href="Student" ></screen>
             </el-col>
             <el-col :span="6">
-                <screen image="screens/examples/德化陶瓷艺术城.png" title="德化国际陶瓷艺术城.rvt" href="DeHua" ></screen>
+                <screen image="screens/examples/德化陶瓷艺术城.png" title="某陶瓷艺术城.rvt" href="DeHua" ></screen>
             </el-col>
             <el-col :span="6">
-                <screen image="screens/examples/金鹏.png" title="金鹏控股总部大楼.rvt" href="JingPeng" ></screen>
+                <screen image="screens/examples/金鹏.png" title="某总部大楼.rvt" href="JingPeng" ></screen>
             </el-col>
         </el-row>
 
@@ -55,7 +55,7 @@
                 <screen image="screens/2.jpg" title="加载事件" href="LoadEvent" ></screen>
             </el-col>
             <el-col :span="6">
-                <screen image="screens/multiModel.png" title="加载多个模型" href="MultiModel" ></screen>
+                <screen image="screens/mergeModel.png" title="合模" href="MergeModel" ></screen>
             </el-col>
             <el-col :span="6">
                 <screen image="screens/rightMenu.png" title="右键菜单" href="RightMenu" ></screen>
@@ -70,38 +70,48 @@
                 <screen image="screens/pickFilter.png" title="构件拾取过滤" href="PickFilter" ></screen>
             </el-col>
             <el-col :span="6">
-                <screen image="screens/4.jpg" title="构件聚焦" href="ZoomTo" ></screen>
-            </el-col>
-            <el-col :span="6">
                 <screen image="screens/5.png" title="构件隐藏/显示" href="Visible" ></screen>
             </el-col>
-        </el-row>
-        <el-row :gutter="10">
             <el-col :span="6">
                 <screen image="screens/6.png" title="设置构件颜色" href="Color" ></screen>
             </el-col>
-            <el-col :span="6">
-                <screen image="screens/7.png" title="设置相机位置" href="CameraPosition" ></screen>
-            </el-col>
+        </el-row>
+        <el-row :gutter="10">
             <el-col :span="6">
                 <screen image="screens/8.png" title="框选构件" href="SelectionBox" ></screen>
             </el-col>
             <el-col :span="6">
                 <screen image="screens/15.png" title="方向指示器" href="NavCube" ></screen>
             </el-col>
-        </el-row>
-        <el-row :gutter="10">
             <el-col :span="6">
                 <screen image="screens/clip.JPG" title="剖切" href="Clip" ></screen>
             </el-col>
             <el-col :span="6">
                 <screen image="screens/BoxClip.png" title="剖切盒" href="FirstPerson" ></screen>
             </el-col>
+        </el-row>
+        <el-row :gutter="10">
             <el-col :span="6">
                 <screen image="screens/gltf.png" title="融合GLTF模型" href="GLTF" ></screen>
             </el-col>
+             <el-col :span="6">
+                <screen image="screens/ModelAnimation.png" title="骨骼动画" href="ModelAnimation" ></screen>
+            </el-col>
             <el-col :span="6">
-                <screen image="screens/map.png" title="导航图" href="Map" ></screen>
+                <screen image="screens/map.png" title="导航图" href="NavigationMap" ></screen>
+            </el-col>
+        </el-row>
+
+        <div class="group-title col_80 px32 f_bold">相机视角</div>
+        <el-row :gutter="10">
+            <el-col :span="6">
+                <screen image="screens/4.jpg" title="构件聚焦" href="ZoomTo" ></screen>
+            </el-col>
+            <el-col :span="6">
+                <screen image="screens/7.png" title="设置相机位置" href="CameraPosition" ></screen>
+            </el-col>
+            <el-col :span="6">
+                <screen image="screens/CameraFly.png" title="飞行定位" href="CameraFly" ></screen>
             </el-col>
         </el-row>
         
@@ -116,7 +126,7 @@
             <el-col :span="6">
                 <screen image="screens/12.png" title="标记标签" href="HtmlMarker" ></screen>
             </el-col>
-             <el-col :span="6">
+            <el-col :span="6">
                 <screen image="screens/10.png" title="三维标签" href="SpriteLabel" ></screen>
             </el-col>
         </el-row>
@@ -132,6 +142,11 @@
             </el-col>
             <el-col :span="6">
                 <screen image="screens/iconfont.png" title="iconfont标签" href="HtmlIconLabel" ></screen>
+            </el-col>
+        </el-row>
+        <el-row :gutter="10">
+            <el-col :span="6">
+                <screen image="screens/ClusterLabel.png" title="标签聚合" href="ClusterLabel" ></screen>
             </el-col>
         </el-row>
 
@@ -234,6 +249,29 @@
             </el-col>
             <el-col :span="6">
                 <screen image="screens/unrealbloom.png" title="辉光" href="UnrealBloom" ></screen>
+            </el-col>
+            <el-col :span="6">
+                <screen image="screens/sao.png" title="SAO" href="SAO" ></screen>
+            </el-col>
+        </el-row>
+
+        <div class="group-title col_80 px32 f_bold">多媒体</div>
+        <el-row :gutter="10">
+            <el-col :span="6">
+                <screen image="screens/LocalVedio.png" title="本地视频" href="Video" ></screen>
+            </el-col>
+            <el-col :span="6">
+                <screen image="screens/HLS.png" title="HLS流视频" href="HLS" ></screen>
+            </el-col>
+        </el-row>
+
+        <div class="group-title col_80 px32 f_bold">数据分析</div>
+        <el-row :gutter="10">
+            <el-col :span="6">
+                <screen image="screens/HeatmapGrid.png" title="热力网格" href="HeatmapGrid" ></screen>
+            </el-col>
+             <el-col :span="6">
+                <screen image="screens/Heatmap.png" title="热力图" href="Heatmap" ></screen>
             </el-col>
         </el-row>
   </div>

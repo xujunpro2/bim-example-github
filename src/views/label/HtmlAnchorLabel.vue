@@ -1,7 +1,8 @@
 <template>
     <div class="rootDiv">
         <div class="messageDiv">
-            锚定标记是采用html div的方式在场景中放置带锚点和指示线的文本标签。锚线指向可以上、下、左、右。
+            锚定标记是采用html div的方式在场景中放置带锚点和指示线的文本标签。锚线指向可以上、下、左、右、中。
+             <el-button @click="update">改变位置和标签内容</el-button>
         </div>
         <div id="containerDiv" ></div>
             <pre class="line-numbers"><code class="language-js">#代码示范
@@ -25,7 +26,7 @@
             *  vd: top/bottom 锚线垂直方向：朝上/朝下 默认top
             *  hd: left/right 锚线水平方向：左/右 默认right
             */
-            plugin.addAnchor({
+            plugin.addLabel({
                 id:100,
                 width:'110px',
                 height:'25px',
@@ -36,7 +37,7 @@
                 distance:40
             })
 
-            plugin.addAnchor({
+            plugin.addLabel({
                 id:101,
                 width:'110px',
                 height:'25px',
@@ -47,7 +48,7 @@
             })
 
             //隐藏某个锚定标签 setVisible(id,visible)
-            //移除某个锚定标签 removeAnchor(id)
+            //移除某个锚定标签 removeLabel(id)
             //移除所有 removeAll()
             //因为内容支持html文本，所以事件交由开发者自己在html文本中编写
         }  
@@ -66,10 +67,35 @@ export default {
         };
 	},
 	methods: {
+        update(){
+            let viewer = BIMI.ViewerHelper.getViewer();
+            let plugin = viewer.getPlugin('HtmlAnchorPlugin'); 
+            //改变100标签的位置
+            plugin.updatePosition(100,new BIMI.THREE.Vector3(-2,6.7,-4.5));
+            /**
+             * 修改既有Label的html和样式
+             * @param {*} id 
+             * @param {*} options 
+             * @example 数据定义
+             * {
+             *      width: 内容框的width css，不设就保持既有的
+             *      height:内容框的height css，不设就保持既有的
+             *      bgColor：内容框的背景色，不设就保持既有的
+             *      html:内容dom的html文本，不设就保持既有的 
+             * }
+             */
+            plugin.updateContent(100,{
+                html:'<div>修改后的文本</div>'
+            })
+            //也可直接拿到标签对应的dom，随意修改
+            let dom = plugin.getLabelDom(100);
+            console.info(dom);
+            
+        },
         addLabel()
         {
             var viewer = BIMI.ViewerHelper.getViewer();
-            var plugin = viewer.getPlugin('HtmlAnchorDivPlugin');
+            var plugin = viewer.getPlugin('HtmlAnchorPlugin');
             if(!plugin)
             {
                 plugin = new BIMI.HtmlAnchorPlugin();
@@ -81,12 +107,12 @@ export default {
             *  id:100
             *  width:内容div的宽度 例如'110px',
             *  height:内容div的高度 例如'25px',
-            *  html:支持html内容，例如'<label style="font-size:12px">广联达的锚定标记</label>',
+            *  html:支持html内容，例如'<label style="font-size:12px">锚定标记</label>',
             *  position:锚点坐标 
             *  vd: top/bottom 锚线垂直方向：朝上/朝下 默认top
             *  hd: left/right 锚线水平方向：左/右 默认right
             */
-            plugin.addAnchor({
+            plugin.addLabel({
                 id:100,
                 width:'110px',
                 height:'25px',
@@ -97,18 +123,18 @@ export default {
                 distance:40
             })
 
-            plugin.addAnchor({
+            plugin.addLabel({
                 id:101,
                 width:'110px',
                 height:'25px',
-                html:'<div style="height:100%;width:100%;"><label style="font-size:12px">左下</label></div>',
+                html:'<div style="height:100%;width:100%;"><label style="font-size:12px">第二个标签</label></div>',
                 position:new BIMI.THREE.Vector3(-2.1184211174520864,  3.215939428033156,  -5.212586303774104),
                 vd:'bottom',
                 hd:'left'
             })
 
             //隐藏某个锚定标签 setVisible(id,visible)
-            //移除某个锚定标签 removeAnchor(id)
+            //移除某个锚定标签 removeLabel(id)
             //移除所有 removeAll()
             //因为内容支持html文本，所以事件交由开发者自己在html文本中编写
         }   
@@ -158,5 +184,6 @@ export default {
         font-size: 12px;
         padding: 5px;
         overflow:hidden;
+        z-index: 1;
     }
 </style>

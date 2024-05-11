@@ -9,8 +9,6 @@
             <pre class="line-numbers"><code class="language-js">#代码示范
         onXYZ(){
             var viewer = BIMI.ViewerHelper.getViewer();
-            //76695 //430 //42582
-            var productData = [{modelId:1,productIds:[430]}]
             var plugin = viewer.getPlugin('TranslatePlugin');
             if(!plugin)
             {
@@ -19,15 +17,23 @@
             }
             /**
              * 指定XYZ方向上各自移动的距离
-             * 参数说明:
-             * option.productData  需要移动的构件，数组类型。例如 [{modelId:1,productIds:[305,200]}]
-             * option.x X方向位移 默认0
-             * option.y Y方向位移 默认0
-             * option.z Z方向位移 默认0
-             * option.time 动画执行时长 毫秒,默认0，表示无动画过程
-             * @param {object} option 
+             * @param {object} option 参数对象
+             * @example
+             * {
+             *      modelId:模型ID
+             *      productIds:构件ID数组
+             *      x: X方向位移 默认0 
+             *      y: Y方向位移 默认0 
+             *      z: Z方向位移 默认0 
+             *      time: 动画执行时长 毫秒,默认0，表示无动画过程 
+             * }
              */
-            plugin.translateXYZ({productData:productData,x:4,y:0,z:0,time:2000})
+            plugin.translateXYZ({
+                modelId:1,
+                productIds:[430],
+                x:4,y:0,z:0,
+                time:2000
+            })
         },
 </code></pre>
     
@@ -48,8 +54,6 @@ export default {
 	methods: {
         onXYZ(){
             var viewer = BIMI.ViewerHelper.getViewer();
-            //76695 //430 //42582
-            var productData = [{modelId:1,productIds:[430]}]
             var plugin = viewer.getPlugin('TranslatePlugin');
             if(!plugin)
             {
@@ -58,15 +62,23 @@ export default {
             }
             /**
              * 指定XYZ方向上各自移动的距离
-             * 参数说明:
-             * option.productData  需要移动的构件，数组类型。例如 [{modelId:1,productIds:[305,200]}]
-             * option.x X方向位移 默认0
-             * option.y Y方向位移 默认0
-             * option.z Z方向位移 默认0
-             * option.time 动画执行时长 毫秒,默认0，表示无动画过程
-             * @param {object} option 
+             * @param {object} option 参数对象
+             * @example
+             * {
+             *      modelId:模型ID
+             *      productIds:构件ID数组
+             *      x: X方向位移 默认0 
+             *      y: Y方向位移 默认0 
+             *      z: Z方向位移 默认0 
+             *      time: 动画执行时长 毫秒,默认0，表示无动画过程 
+             * }
              */
-            plugin.translateXYZ({productData:productData,x:4,y:0,z:0,time:2000})
+            plugin.translateXYZ({
+                modelId:1,
+                productIds:[430],
+                x:4,y:0,z:0,
+                time:2000
+            })
         },
       
        

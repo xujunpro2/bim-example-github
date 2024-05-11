@@ -41,7 +41,7 @@ export default {
                 viewer.addPlugin(outlinePlugin);
             }
             
-            outlinePlugin.add(1,[934462]);
+            outlinePlugin.add(1,[10934462]);
             viewer.isDirty();  
         }
     },
@@ -49,11 +49,12 @@ export default {
         
         this.$nextTick(()=>{
             var dom = document.getElementById('containerDiv');
-            let viewer = new BIMI.BimViewer(dom,{grid:false,debug:true,loading:true,enableInstancedMesh:true});
+            let viewer = new BIMI.BimViewer(dom,{grid:false,debug:true,loading:true,antiAliasing:'smaa'});
             viewer.load('datas/rac_basic_sample_project/bim.bin');
             viewer.on('loaded',event=>{
                 this.addOutline()
             })
+           
             Prism.highlightAll();
         })
          

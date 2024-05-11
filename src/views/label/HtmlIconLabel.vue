@@ -4,6 +4,7 @@
             二维标记是采用html div的方式在场景中放置文本标签。
             <br/>优点是文字清晰度高并且始终可见。
             <br/>缺点是因为div没有Z方向坐标，所以缺乏三维感。
+            <el-button @click="update">改变位置和标签内容</el-button>
         </div>
         <div id="containerDiv" ></div>
             <pre class="line-numbers"><code class="language-js">#代码示范
@@ -58,6 +59,21 @@ export default {
         };
 	},
 	methods: {
+        update(){
+            let viewer = BIMI.ViewerHelper.getViewer();
+            let plugin = viewer.getPlugin('HtmlIconLabelPlugin'); 
+            //改变100标签的位置
+            plugin.updatePosition(100,new BIMI.THREE.Vector3(-2,6.7,-4.5));
+            //改变100标签的文本
+            plugin.updateContent(100,{
+                color:'#00ff00',
+                text:'修改后的文本'
+            })
+            //也可直接拿到标签对应的dom，随意修改
+            let dom = plugin.getLabelDom(100);
+            console.info(dom);
+            
+        },
         addLabel()
         {
             var viewer = BIMI.ViewerHelper.getViewer();
@@ -80,8 +96,8 @@ export default {
              * distance:100 视距，默认是null，就无限制  <br/>
              */
             plugin.addLabel({
-                id:1234,
-                bindData:{id:1234,worker:'jack'},
+                id:100,
+                bindData:{worker:'jack'},
                 position:new BIMI.THREE.Vector3(-2,3.7,-4.5),
                 offset:[0,-30],
                 icon:'myfont iconmarker',
@@ -136,9 +152,10 @@ export default {
         border-radius: 5px;
         color: #fff;
         width: 200px;
-        height: 120px;
+        height: 220px;
         font-size: 12px;
         padding: 5px;
         overflow:hidden;
+        z-index:1;
     }
 </style>

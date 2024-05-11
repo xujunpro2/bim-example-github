@@ -13,7 +13,6 @@ strong {
     position: relative; /*这个是rootDiv中有绝对布局的div而做的*/
     width: 100%;
     height: 100%;
-    padding: 5px;
     overflow: auto;
 }
 .screenDiv {

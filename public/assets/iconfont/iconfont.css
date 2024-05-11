@@ -1,8 +1,8 @@
 @font-face {
   font-family: "iconfont"; /* Project id 2579048 */
-  src: url('iconfont.woff2?t=1677467430421') format('woff2'),
-       url('iconfont.woff?t=1677467430421') format('woff'),
-       url('iconfont.ttf?t=1677467430421') format('truetype');
+  src: url('iconfont.woff2?t=1702455926147') format('woff2'),
+       url('iconfont.woff?t=1702455926147') format('woff'),
+       url('iconfont.ttf?t=1702455926147') format('truetype');
 }
 
 .iconfont {
@@ -11,6 +11,38 @@
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-sheyingjishexiangji:before {
+  content: "\e676";
+}
+
+.icon-move:before {
+  content: "\e643";
+}
+
+.icon-xuanzhuan:before {
+  content: "\e615";
+}
+
+.icon-zoom:before {
+  content: "\e685";
+}
+
+.icon-pin:before {
+  content: "\e66f";
+}
+
+.icon-shubiao:before {
+  content: "\e627";
+}
+
+.icon-map-marker:before {
+  content: "\e7bf";
+}
+
+.icon-pin-alt:before {
+  content: "\ecd4";
 }
 
 .icon-mapmarker:before {

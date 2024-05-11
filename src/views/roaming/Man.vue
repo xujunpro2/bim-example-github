@@ -1,7 +1,7 @@
 <template>
     <div class="rootDiv">
         <div class="messageDiv">
-            鼠标右键控制方向、WSAD键移动
+            鼠标右键控制方向、WSAD键移动,Q加速、E减速
             <br/>
             <el-button size="mini" @click="onStart">开始</el-button>
             <el-button size="mini" @click="onStop">退出</el-button>

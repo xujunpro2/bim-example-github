@@ -3,11 +3,11 @@
         <div class="messageDiv">
             标记标签混合了标记图标和html div。
             <br/>你可以点击圆形标记设置内容面板显示/隐藏。
-            <br/>和文本标签一样支持视距，但视距操纵的是透明度而非可见性。
+            <el-button @click="update">改变位置和标签内容</el-button>
         </div>
         <div id="containerDiv" ></div>
             <pre class="line-numbers"><code class="language-js">#代码示范
-           var viewer = BIMI.ViewerHelper.getViewer();
+            var viewer = BIMI.ViewerHelper.getViewer();
             var plugin = viewer.getPlugin('HtmlMarkerPlugin');
             if(!plugin)
             {
@@ -15,29 +15,27 @@
                 viewer.addPlugin(plugin);
             }
             /**
-             * 添加一个MarkerText
+             * 添加一个标签
              * 参数说明:
-             * id:'1234',                              //对象id
-             * flag:'1',                                //圆形标记采用文字，通常是数字或大写字母，单个字符
-             * flagImg:'xx.png',                        //圆形标记采用图片，最好是12*12的小图片
-             * flagColor:'rgba(255, 0, 0, 0.8)',        //marker的背景填充色
-             * title:'标题',                            //内容Div的标题文字
-             * content:'可以支持html表达文本',           //内容Div的内容文件，支持Html格式
-             * contentVisible:false,                    //内容Div默认是否可见，内容Div可通过点击marker切换可见性
-             * width:'150px',                          //内容Div的宽度css,height不需要，会自动计算
-             * position:new THREE.Vector3(1.5,3.5,0),  //坐标位置,marker的圆心将以这个位置为准
-             * distance:50                             //视距
+             *      id:对象id 
+             *      bindData:业务绑定数据object，可以在点击 falg的时候返回 
+             *      flag: 圆形标记的文字，通常是数字或大写字母，单个字符 。flag和flagImg两者设置其一即可
+             *      flagImg:圆形标记采用图片，最好是12*12的小图片。flag和flagImg两者设置其一即可
+             *      flagColor: 圆形标记的背景填充色。默认值:'rgba(255, 0, 0, 0.8)'
+             *      content:内容Div的内容文件，可以是Html文本，也可以是dom 
+             *      contentVisible:内容Div默认是否可见，内容Div可通过点击圆形标记切换可见性。默认值: false
+             *      width:内容Div的宽度css,如:'150PX'。如果不设置，就自适应 
+             *      position: 位置,圆形标记的圆心将以这个位置为准 。BIMI.THREE.Vector3
+             *      distance: 视距
              */
-            plugin.addMarker({
+            plugin.addLabel({
                 id:100,
                 bindData:{name:'绑定数据'},
                 //flag:'1',
                 flagImg:'pictures/HtmlMarkerText.png',
                 flagColor:'rgba(255, 0, 0, 0.8)',
-                title:'标题',
                 content:'可以支持html表达文本',
                 contentVisible:false,
-                width:'150px',
                 position:new BIMI.THREE.Vector3(-3.5,3,-4.5),
                 distance:50
             })
@@ -45,11 +43,11 @@
             plugin.on('click',event=>{
                 console.info(event)
             })
-
             //移除标签
-            plugin.removeMarker(100)
-            //清空所有标签
-            plugin.removeAll();
+            // setTimeout(() => {
+            //      plugin.removeLabel(100)
+            // }, 2000);
+           
 </code></pre>
     
     </div>
@@ -66,6 +64,19 @@ export default {
         };
 	},
 	methods: {
+        update(){
+            let viewer = BIMI.ViewerHelper.getViewer();
+            let plugin = viewer.getPlugin('HtmlMarkerPlugin'); 
+            //改变100标签的位置
+            plugin.updatePosition(100,new BIMI.THREE.Vector3(-2,6.7,-4.5));
+            //改变100标签的文本
+            plugin.updateContent(100,{
+                dom:'<div style="color:#ff0000">修改后的文本</div>'
+            })
+            //也可直接拿到标签对应的dom，随意修改
+            let dom = plugin.getLabelDom(100);
+            console.info(dom);
+        },
         addLabel()
         {
             var viewer = BIMI.ViewerHelper.getViewer();
@@ -76,29 +87,27 @@ export default {
                 viewer.addPlugin(plugin);
             }
             /**
-             * 添加一个MarkerText
+             * 添加一个标签
              * 参数说明:
-             * id:'1234',                              //对象id
-             * flag:'1',                                //圆形标记采用文字，通常是数字或大写字母，单个字符
-             * flagImg:'xx.png',                        //圆形标记采用图片，最好是12*12的小图片
-             * flagColor:'rgba(255, 0, 0, 0.8)',        //marker的背景填充色
-             * title:'标题',                            //内容Div的标题文字
-             * content:'可以支持html表达文本',           //内容Div的内容文件，支持Html格式
-             * contentVisible:false,                    //内容Div默认是否可见，内容Div可通过点击marker切换可见性
-             * width:'150px',                          //内容Div的宽度css,height不需要，会自动计算
-             * position:new THREE.Vector3(1.5,3.5,0),  //坐标位置,marker的圆心将以这个位置为准
-             * distance:50                             //视距
+             *      id:对象id 
+             *      bindData:业务绑定数据object，可以在点击 falg的时候返回 
+             *      flag: 圆形标记的文字，通常是数字或大写字母，单个字符 。flag和flagImg两者设置其一即可
+             *      flagImg:圆形标记采用图片，最好是12*12的小图片。flag和flagImg两者设置其一即可
+             *      flagColor: 圆形标记的背景填充色。默认值:'rgba(255, 0, 0, 0.8)'
+             *      content:内容Div的内容文件，可以是Html文本，也可以是dom 
+             *      contentVisible:内容Div默认是否可见，内容Div可通过点击圆形标记切换可见性。默认值: false
+             *      width:内容Div的宽度css,如:'150PX'。如果不设置，就自适应 
+             *      position: 位置,圆形标记的圆心将以这个位置为准 。BIMI.THREE.Vector3
+             *      distance: 视距
              */
-            plugin.addMarker({
+            plugin.addLabel({
                 id:100,
                 bindData:{name:'绑定数据'},
                 //flag:'1',
                 flagImg:'pictures/HtmlMarkerText.png',
                 flagColor:'rgba(255, 0, 0, 0.8)',
-                title:'标题',
                 content:'可以支持html表达文本',
                 contentVisible:false,
-                width:'150px',
                 position:new BIMI.THREE.Vector3(-3.5,3,-4.5),
                 distance:50
             })
@@ -108,7 +117,7 @@ export default {
             })
             //移除标签
             // setTimeout(() => {
-            //      plugin.removeMarker(100)
+            //      plugin.removeLabel(100)
             // }, 2000);
            
         }   
@@ -158,5 +167,6 @@ export default {
         font-size: 12px;
         padding: 5px;
         overflow:hidden;
+        z-index: 1;
     }
 </style>

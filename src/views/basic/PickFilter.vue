@@ -42,14 +42,14 @@ export default {
             //设置模型全部透明
             viewer.setTransparentModel(1);//因为load的时候没有指定modelId,那么这里应该就是1了（bad smell）
             //保留几个用于测试的构件
-            viewer.resetProductsMaterial(1,[736435, 735739,981963,987167,701300]);
+            viewer.resetProductsMaterial(1,[10736435, 10735739,10981963,10987167,10701300]);
 
             //设置Pick过滤
             let plugin = viewer.getPlugin('PickPlugin');
             //这个是为了方便测试，先设置整个model都不可pick
             plugin.addFilterProductIdsByModel(1);
             //然后将可以pick的排除掉
-            plugin.removeFilterProductIds(1,[736435, 735739,981963,987167,701300])
+            plugin.removeFilterProductIds(1,[10736435, 10735739,10981963,10987167,10701300])
             viewer.isDirty();
         },
     },

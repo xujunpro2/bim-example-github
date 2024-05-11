@@ -2,7 +2,7 @@
 <template>
     <div class="rootDiv">
          <div class="messageDiv">
-            鼠标按住移动控制方向、WSAD键移动、ESC键退出漫游
+            鼠标按住移动控制方向、WSAD键移动、E升高、Q降低,ESC键退出漫游
             <br/>移动速度:<el-slider style="width:150px;margin-left:15px"  :min="1" :max="10" v-model="speed" @input="onChange"></el-slider>
         </div>
         <div id="containerDiv" ></div>

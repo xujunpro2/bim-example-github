@@ -18,7 +18,6 @@ export default {
 		initView() {
             var dom = document.getElementById('containerDiv');
             var viewer = new BIMI.BimViewer(dom);
-            viewer.setBoxShadow();//DIV增加一个阴影效果，只是好看一些，没啥用
             let toolbar = new BIMI.Toolbar(viewer);
             viewer.enableDamping(true,0.08);
 			viewer.load('datas/Machine/bim.bin');

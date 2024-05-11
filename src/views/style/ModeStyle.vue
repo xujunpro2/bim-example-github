@@ -3,51 +3,32 @@
         <div class="messageDiv">
             点击按钮,切换模型不同样式。
             <br/>
-            <el-button size="mini" @click="onTransparent">透明模式</el-button>
+            <el-button size="mini" @click="onTransparent">透明模式(指定颜色和透明度)</el-button>
+            <p/>
+            <el-button size="mini" @click="onTransparentSaveOriginalMaterial">透明模式(保留原始材质)</el-button>
             <p/>
             <el-button size="mini" @click="onReset">原始模式</el-button>
         </div>
         <div id="containerDiv" ></div>
             <pre class="line-numbers"><code class="language-js">#代码示范
         onTransparent(){
-            //边线模式需要手工释放
-            if(this.curModel === 'edge')
-            {
-                this.clearEdge();
-            }
             var viewer = BIMI.ViewerHelper.getViewer();
-            viewer.setTransparentModel(1);
-            viewer.isDirty();
+            viewer.setNormalModel(1);
+            viewer.setTransparentModel(1,'#ffffff',0.3);
             this.curModel = 'transparent'
         },
-        onEdge(){
-            //边线模式需要手工释放
-            if(this.curModel === 'edge')
-            {
-                this.clearEdge();
-            }
+        onTransparentSaveOriginalMaterial(){
             var viewer = BIMI.ViewerHelper.getViewer();
-            viewer.setEdgeMode(1);
-            viewer.isDirty();
-            this.curModel = 'edge'
+            viewer.setNormalModel(1);
+            viewer.setTransparentModelSaveOriginalMaterial(1,0.3);
+            this.curModel = 'transparentSaveOriginalMaterial'
         },
  
         onReset(){
-            //边线模式需要手工释放
-            if(this.curModel === 'edge')
-            {
-                this.clearEdge();
-            }
             var viewer = BIMI.ViewerHelper.getViewer();
             viewer.setNormalModel(1);
-            viewer.isDirty();
-            this.curModel = 'normal'
+            this.curModel = 'normal';
         },  
-
-        clearEdge(){
-            var viewer = BIMI.ViewerHelper.getViewer();
-            viewer.disposeEdgeMode(1);
-        }
 
 </code></pre>
     
@@ -67,51 +48,32 @@ export default {
 	},
 	methods: {
         onTransparent(){
-            //边线模式需要手工释放
-            if(this.curModel === 'edge')
-            {
-                this.clearEdge();
-            }
             var viewer = BIMI.ViewerHelper.getViewer();
-            viewer.setTransparentModel(1);
-            viewer.isDirty();
+            viewer.setNormalModel(1);
+            viewer.setTransparentModel(1,'#ffffff',0.3);
             this.curModel = 'transparent'
         },
-        onEdge(){
-            //边线模式需要手工释放
-            if(this.curModel === 'edge')
-            {
-                this.clearEdge();
-            }
+        onTransparentSaveOriginalMaterial(){
             var viewer = BIMI.ViewerHelper.getViewer();
-            viewer.setEdgeMode(1);
-            viewer.isDirty();
-            this.curModel = 'edge'
+            viewer.setNormalModel(1);
+            viewer.setTransparentModelSaveOriginalMaterial(1,0.3);
+            this.curModel = 'transparentSaveOriginalMaterial'
         },
  
         onReset(){
-            //边线模式需要手工释放
-            if(this.curModel === 'edge')
-            {
-                this.clearEdge();
-            }
             var viewer = BIMI.ViewerHelper.getViewer();
             viewer.setNormalModel(1);
-            viewer.isDirty();
-            this.curModel = 'normal'
+            this.curModel = 'normal';
         },  
 
-        clearEdge(){
-            var viewer = BIMI.ViewerHelper.getViewer();
-            viewer.disposeEdgeMode(1);
-        }
+     
     },
 	mounted() {
         
         this.$nextTick(()=>{
             var dom = document.getElementById('containerDiv');
             var viewer = new BIMI.BimViewer(dom);
-            viewer.load('datas/冷站/bim.bin');
+            viewer.load('datas/rac_basic_sample_project/bim.bin');
            
 			viewer.on("loaded", model => {
     

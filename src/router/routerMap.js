@@ -94,7 +94,7 @@ export const constantRoutes = [
                 path: 'benliu',
                 name: 'BenLiu',
                 component: () => import('@/views/example/BenLiu'),
-                meta: { title: '奔牛水利枢纽工程' },
+                meta: { title: '水利工程' },
                 hidden: true 
             },
             {
@@ -115,14 +115,14 @@ export const constantRoutes = [
                 path: 'dehua',
                 name: 'DeHua',
                 component: () => import('@/views/example/DeHua'),
-                meta: { title: '德化陶瓷城' },
+                meta: { title: '陶瓷城' },
                 hidden: true 
             },
             {
                 path: 'jingpeng',
                 name: 'JingPeng',
                 component: () => import('@/views/example/JingPeng'),
-                meta: { title: '金鹏大楼' },
+                meta: { title: '大楼' },
                 hidden: true 
             },
         ]
@@ -136,7 +136,7 @@ export const constantRoutes = [
         children: [
             {
                 path: 'load',
-                name: 'LoadBim',
+                name: 'Load',
                 component: () => import('@/views/basic/Load'),
                 meta: { title: '加载模型' }
             },
@@ -153,10 +153,10 @@ export const constantRoutes = [
                 meta: { title: '右键事件' }
             },
             {
-                path: 'multi',
-                name: 'MultiModel',
-                component: () => import('@/views/basic/MultiModel'),
-                meta: { title: '加载多个模型' }
+                path: 'merge',
+                name: 'MergeModel',
+                component: () => import('@/views/basic/MergeModel'),
+                meta: { title: '合模' }
             },
             {
                 path: 'pick',
@@ -170,12 +170,7 @@ export const constantRoutes = [
                 component: () => import('@/views/basic/PickFilter'),
                 meta: { title: '构件拾取过滤' }
             },
-            {
-                path: 'zoomTo',
-                name: 'ZoomTo',
-                component: () => import('@/views/basic/ZoomTo'),
-                meta: { title: '构件定位' }
-            },
+           
             {
                 path: 'visible',
                 name: 'Visible',
@@ -188,18 +183,7 @@ export const constantRoutes = [
                 component: () => import('@/views/basic/Color'),
                 meta: { title: '构件颜色' }
             },
-            {
-                path: 'cameraPosition',
-                name: 'CameraPosition',
-                component: () => import('@/views/basic/CameraPosition'),
-                meta: { title: '相机位置' }
-            },
-            {
-                path: 'cameraFly',
-                name: 'CameraFly',
-                component: () => import('@/views/basic/CameraFly'),
-                meta: { title: '飞行定位' }
-            },
+           
             {
                 path: 'selectionBox',
                 name: 'SelectionBox',
@@ -237,6 +221,12 @@ export const constantRoutes = [
                 meta: { title: 'GLTF模型' }
             },
             {
+                path: 'modelAnimation',
+                name: 'ModelAnimation',
+                component: () => import('@/views/basic/ModelAnimation'),
+                meta: { title: '骨骼动画' }
+            },
+            {
                 path: 'annotation',
                 name: 'Annotation',
                 component: () => import('@/views/basic/Annotation'),
@@ -245,11 +235,107 @@ export const constantRoutes = [
             {
                 path: 'map',
                 name: 'Map',
-                component: () => import('@/views/basic/Map'),
+                component: () => import('@/views/basic/NavigationMap'),
                 meta: { title: '导航图' }
+            },
+            {
+                path: 'levelMap',
+                name: 'NavigationLevelMap',
+                component: () => import('@/views/basic/NavigationLevelMap'),
+                meta: { title: '楼层导航图' }
             },
         ]
     },
+    {
+        path: '/camera',
+        component: Layout,
+        redirect: 'noRedirect',
+        meta: { title: '相机视角', icon: 'eye-open' },
+        alwaysShow:true,
+        children: [
+            {
+                path: 'zoomTo',
+                name: 'ZoomTo',
+                component: () => import('@/views/camera/ZoomTo'),
+                meta: { title: '聚焦构件' }
+            },
+            {
+                path: 'zoomToAndCustomAngle',
+                name: 'ZoomToAndCustomAngle',
+                component: () => import('@/views/camera/ZoomToAndCustomAngle'),
+                meta: { title: '聚焦构件并指定角度' }
+            },
+            {
+                path: 'zoomToMutilProducts',
+                name: 'ZoomToMutilProducts',
+                component: () => import('@/views/camera/ZoomToMutilProducts'),
+                meta: { title: '聚焦多个构件' }
+            },
+            {
+                path: 'zoomToLevel',
+                name: 'ZoomToLevel',
+                component: () => import('@/views/camera/ZoomToLevel'),
+                meta: { title: '聚焦层高' }
+            },
+            {
+                path: 'zoomToModel',
+                name: 'ZoomToModel',
+                component: () => import('@/views/camera/ZoomToModel'),
+                meta: { title: '聚焦模型' }
+            },
+            {
+                path: 'cameraPosition',
+                name: 'CameraPosition',
+                component: () => import('@/views/camera/CameraPosition'),
+                meta: { title: '相机初始位置' }
+            },
+            {
+                path: 'cameraFly',
+                name: 'CameraFly',
+                component: () => import('@/views/camera/CameraFly'),
+                meta: { title: '飞行定位' }
+            }
+        ]
+    },
+    // {
+    //     path: '/panoramic',
+    //     component: Layout,
+    //     redirect: 'noRedirect',
+    //     meta: { title: '全景图联动', icon: 'edit' },
+    //     alwaysShow:true,
+    //     children: [
+    //         {
+    //             path: 'panoramicLabel',
+    //             name: 'PanoramicLabel',
+    //             component: () => import('@/views/panoramic/PanoramicLabel'),
+    //             meta: { title: '全景图添加标签' }
+    //         },
+    //         {
+    //             path: 'panoramicAndSceneSync',
+    //             name: 'PanoramicAndSceneSync',
+    //             component: () => import('@/views/panoramic/PanoramicAndSceneSync'),
+    //             meta: { title: '全景和三维视角同步' }
+    //         },
+    //         {
+    //             path: 'panoramicOverlay',
+    //             name: 'PanoramicOverlay',
+    //             component: () => import('@/views/panoramic/PanoramicOverlay'),
+    //             meta: { title: '全景和三维重叠' }
+    //         },
+    //         {
+    //             path: 'setPosition',
+    //             name: 'SetPosition',
+    //             component: () => import('@/views/panoramic/SetPosition'),
+    //             meta: { title: '校正位置' }
+    //         },
+    //         {
+    //             path: 'switchMode',
+    //             name: 'SwitchMode',
+    //             component: () => import('@/views/panoramic/SwitchMode'),
+    //             meta: { title: '分屏与重叠模式切换' }
+    //         }
+    //     ]
+    // },
     {
         path: '/label',
         component: Layout,
@@ -311,6 +397,12 @@ export const constantRoutes = [
                 component: () => import('@/views/label/Billboard'),
                 meta: { title: '广告牌' }
             },
+            {
+                path: 'cluster',
+                name: 'ClusterLabel',
+                component: () => import('@/views/label/ClusterLabel'),
+                meta: { title: '标签聚合' }
+            },
         ]
     },
     {
@@ -343,6 +435,24 @@ export const constantRoutes = [
                 name: 'ProductEdge',
                 component: () => import('@/views/style/ProductEdge'),
                 meta: { title: '构件边框' }
+            },
+            {
+                path: 'gradientStyle',
+                name: 'GradientStyle',
+                component: () => import('@/views/style/GradientStyle'),
+                meta: { title: '构件渐变' }
+            },
+            {
+                path: 'replaceStyle',
+                name: 'ReplaceStyle',
+                component: () => import('@/views/style/ReplaceStyle'),
+                meta: { title: '加载之前替换样式' }
+            },
+            {
+                path: 'setTexture',
+                name: 'SetTexture',
+                component: () => import('@/views/style/SetTexture'),
+                meta: { title: '设置贴图' }
             },
         ]
     },
@@ -479,6 +589,12 @@ export const constantRoutes = [
                 name: 'Fog',
                 component: () => import('@/views/environment/Fog'),
                 meta: { title: '雾天' }
+            },
+            {
+                path: 'water',
+                name: 'Water',
+                component: () => import('@/views/environment/Water'),
+                meta: { title: '水面' }
             }
         ]
     },
@@ -509,6 +625,12 @@ export const constantRoutes = [
                 meta: { title: '火2' }
             },
             {
+                path: 'fire3',
+                name: 'Fire3',
+                component: () => import('@/views/effects/Fire3'),
+                meta: { title: '火3' }
+            },
+            {
                 path: 'tube',
                 name: 'Tube',
                 component: () => import('@/views/effects/TubeFlow'),
@@ -525,6 +647,18 @@ export const constantRoutes = [
                 name: 'UnrealBloom',
                 component: () => import('@/views/effects/UnrealBloom'),
                 meta: { title: '辉光' }
+            },
+            {
+                path: 'sao',
+                name: 'SAO',
+                component: () => import('@/views/effects/SAO'),
+                meta: { title: 'SAO' }
+            },
+            {
+                path: 'saoPlugin',
+                name: 'SAOPlugin',
+                component: () => import('@/views/effects/SAOPluginExample'),
+                meta: { title: 'SAOPlugin' }
             }
         ]
     },
@@ -546,6 +680,108 @@ export const constantRoutes = [
                 name: 'HLS',
                 component: () => import('@/views/media/HLS'),
                 meta: { title: 'HLS流视频' }
+            }
+        ]
+    },
+    {
+        path: '/analysis',
+        component: Layout,
+        redirect: 'noRedirect',
+        meta: { title: '数据分析', icon: 'dashboard' },
+        alwaysShow:true,
+        children: [
+            {
+                path: 'heatmapGrid',
+                name: 'HeatmapGrid',
+                component: () => import('@/views/analysis/HeatmapGrid'),
+                meta: { title: '热力网格' }
+            },
+            {
+                path: 'heatmap',
+                name: 'Heatmap',
+                component: () => import('@/views/analysis/Heatmap'),
+                meta: { title: '热力图' }
+            },
+        ]
+    },
+    {
+        path: '/map',
+        component: Layout,
+        redirect: 'noRedirect',
+        meta: { title: '地图', icon: 'tab' },
+        alwaysShow:true,
+        children: [
+            {
+                path: 'mapProviders',
+                name: 'MapProviders',
+                component: () => import('@/views/map/MapProviders'),
+                meta: { title: '地图图层' }
+            },
+            {
+                path: 'loadBim',
+                name: 'LoadBim',
+                component: () => import('@/views/map/LoadBim'),
+                meta: { title: '加载BIM模型' }
+            },
+            {
+                path: 'loadGltf',
+                name: 'LoadGltf',
+                component: () => import('@/views/map/LoadGltf'),
+                meta: { title: '加载GLTF模型' }
+            },
+            {
+                path: 'flyTo',
+                name: 'FlyTo',
+                component: () => import('@/views/map/FlyTo'),
+                meta: { title: '飞行定位' }
+            },
+            {
+                path: 'sweepLight',
+                name: 'SweepLight',
+                component: () => import('@/views/map/SweepLight'),
+                meta: { title: '城市扫光' }
+            },
+            {
+                path: 'jump',
+                name: 'Jump',
+                component: () => import('@/views/map/Jump'),
+                meta: { title: '大小场景跳转' }
+            },
+            {
+                path: 'osgb',
+                name: 'osgb',
+                component: () => import('@/views/map/OSGB'),
+                meta: { title: '倾斜摄影' }
+            },
+            {
+                path: 'geojson',
+                name: 'GeoJson',
+                component: () => import('@/views/map/GeoJson'),
+                meta: { title: 'GeoJson' }
+            },
+            {
+                path: 'road',
+                name: 'Road',
+                component: () => import('@/views/map/Road'),
+                meta: { title: '路网' }
+            },
+            {
+                path: 'heatmapGridMap',
+                name: 'HeatmapGridMap',
+                component: () => import('@/views/map/HeatmapGridMap'),
+                meta: { title: '热力网格地图' }
+            },
+            {
+                path: 'heatmapMap',
+                name: 'HeatmapMap',
+                component: () => import('@/views/map/HeatmapMap'),
+                meta: { title: '热力图地图' }
+            },
+            {
+                path: 'isoline',
+                name: 'IsoLine',
+                component: () => import('@/views/map/IsoLine'),
+                meta: { title: '等值线' }
             }
         ]
     },

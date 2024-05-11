@@ -7,14 +7,16 @@
 var dom = document.getElementById('containerDiv');
 //创建核心类BimViewer,SDK所有的class都以BIMI为前缀
 var viewer = new BIMI.BimViewer(dom);
-//启用边框阴影效果
-viewer.setBoxShadow();
+
 //启用SDK自带的UI套件
 let toolbar = new BIMI.Toolbar(viewer);
 //启用操作阻尼效果
 viewer.enableDamping(true,0.08)
 //加载轻量化数据文件
-viewer.load('datas/长方体.bin')
+//load返回Promise对象
+viewer.load('datas/长方体/bim.bin').then(event=>{
+    console.info(event);
+});
 
 //如果是VUE/React技术的单页应用,需要在页面销毁的时候释放资源
 beforeDestroy() {
@@ -48,14 +50,14 @@ export default {
         this.$nextTick(()=>{
             var dom = document.getElementById('containerDiv');
             var viewer = new BIMI.BimViewer(dom);
-            //启用边框阴影效果
-            viewer.setBoxShadow();
             //启用SDK自带的UI套件
             let toolbar = new BIMI.Toolbar(viewer);
             //启用操作阻尼效果
             viewer.enableDamping(true,0.08)
-
-            viewer.load('datas/长方体/bim.bin');
+            //load返回Promise对象
+            viewer.load('datas/长方体/bim.bin').then(event=>{
+                console.info(event);
+            });
             Prism.highlightAll();
         })
          

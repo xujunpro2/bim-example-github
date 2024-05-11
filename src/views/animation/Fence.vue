@@ -101,17 +101,20 @@ export default {
                     new BIMI.THREE.Vector3(-5,0,5),
                     new BIMI.THREE.Vector3(-8,0,1),
                 ],
-                height:2,
+                height:4,
                 color1:'#ff0000',
                 color2:'#ffffff',
                 opacity:0.8
             });
 
             let air = this.airMesh;
-
+            //每隔100毫秒，让飞机位置移动一点，并且验证一下飞机是否在电子围栏内
             setInterval(() => {
+                //移动飞机位置
                 air.position.x = air.position.x + 0.1;
+                //判断飞机是否在围栏内部，参数是一组mesh对象
                 let result = plugin.validateBox([air]);
+                //判断结果是个Map，key是mesh,value是bool
                 let fence = result.get(air);
                 if(fence)
                 {
@@ -137,16 +140,20 @@ export default {
                 return airMesh;
             }
         },
+       
     },
 	mounted() {
         
         this.$nextTick(()=>{
             var dom = document.getElementById('containerDiv');
-            let viewer = new BIMI.BimViewer(dom,{grid:false,debug:true,loading:true,enableInstancedMesh:true});
+            let viewer = new BIMI.BimViewer(dom,{grid:true,debug:true,loading:true,enableInstancedMesh:true});
             viewer.loadGLTF('datas/glb/Cesium_Air.glb');
             viewer.on(BIMI.ViewerEvent.LOADED,event=>{
                 this.airMesh = this.getAirMesh();
                 this.FencePluginTest();
+            })
+            viewer.on(BIMI.ViewerEvent.PICK,event=>{
+                console.info(event)
             })
             Prism.highlightAll();
         })

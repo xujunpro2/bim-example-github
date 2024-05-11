@@ -1,5 +1,5 @@
 <template>
-	<div id="containerDiv" class="bimDiv">
+	<div id="containerDiv">
        
     </div>
 </template>
@@ -21,13 +21,6 @@ export default {
             var viewer = new BIMI.BimViewer(dom,{enableInstancedMesh:false});
             viewer.load('datas/二层整合无桥架/bim.bin');
             let toolbar = new BIMI.Toolbar(viewer);
-            viewer.on('pick',event=>{
-                // console.info(event);
-                var modelId = event.data[0].modelId;
-                var productId = event.data[0].productId;
-                var product = viewer.getProduct(modelId,productId);
-                console.info(product)
-            })
 		},
 		//关闭页面，释放当前所有的bim模型
 		destroyView() {
@@ -53,13 +46,7 @@ export default {
 
 
 <style scoped>
-.bimDiv {
-	position: relative;
-	width: 100%;
-	height: 100%;
-	overflow: hidden;
-   background-color: #f8f8f8;
-}
+
 
 .loading_bg {
 	position: absolute;

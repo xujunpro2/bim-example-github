@@ -68,7 +68,8 @@ export default {
                 
                 plugin.createVideoMesh({
                     id:1,
-                    src:'http://1257120875.vod2.myqcloud.com/0ef121cdvodtransgzp1257120875/3055695e5285890780828799271/v.f230.m3u8',
+                    src:'https://demo.unified-streaming.com/k8s/features/stable/video/tears-of-steel/tears-of-steel.ism/.m3u8',
+                   // src:'http://1257120875.vod2.myqcloud.com/0ef121cdvodtransgzp1257120875/3055695e5285890780828799271/v.f230.m3u8',//资源不可用了
                     position:new BIMI.THREE.Vector3(7.255,9,0.5),//视频mesh的position,默认(0,0,0)
                     width:6,//视频mesh的宽度,默认16
                     height:3,//视频mesh的高度,默认9
@@ -96,18 +97,16 @@ export default {
         this.$nextTick(()=>{
             var dom = document.getElementById('containerDiv');
             var viewer = new BIMI.BimViewer(dom);
-            viewer.load('datas/rac_basic_sample_project/bim.bin');
-           
-			viewer.on(BIMI.ViewerEvent.LOADED, model => {
-                
-                // //转到合适的位置
-                let bbox = viewer.getProductBbox(1,849032);
+            viewer.load('datas/rac_basic_sample_project/bim.bin').then(model=>{
+                // 这段代码目的是为了飞行到面对视频的位置，但建议使用现在更简洁的方式，直接设置相机state数据到合适位置即可
+                let bbox = viewer.getProductBbox(1,10849032);
                 //构件是个墙壁，我们放vedio的地方离墙壁的中心点做个偏移，这样就把target对准vedio的中心点，写死的
                 let target = bbox.getCenter( new BIMI.THREE.Vector3() ).sub (new BIMI.THREE.Vector3(0,0,-4.5)) ;
                 viewer.zoomToPositionAndTarget(new BIMI.THREE.Vector3(0,9,0.5),target)
                 this.addVideo();
                 viewer.isDirty();
             });
+           
             viewer.on('pick',event=>{
                 var modelId = event.data[0].modelId;
                 var productId = event.data[0].productId;

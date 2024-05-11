@@ -9,7 +9,10 @@
 //加载BIM模型
 viewer.load('datas/rac_basic_sample_project/bim.bin');
 //加载GLTF模型，location是设置模型的位置，如果不设置该参数，则GLTF模型会以(0,0,0)为默认基点
-viewer.loadGLTF('datas/gltf/DamagedHelmet.gltf',{location:new BIMI.THREE.Vector3(0,10,0)});
+viewer.load('datas/gltf/DamagedHelmet.gltf',{
+    location:new BIMI.THREE.Vector3(0,10,0),
+    scale:new BIMI.THREE.Vector3(3,3,3),
+    updateRegion:false
 })</code></pre>
     </div>
 	
@@ -33,16 +36,17 @@ export default {
             var dom = document.getElementById('containerDiv');
             var viewer = new BIMI.BimViewer(dom,{grid:false});
             viewer.load('datas/rac_basic_sample_project/bim.bin');
-            viewer.loadGLTF('datas/gltf/DamagedHelmet.gltf',{location:new BIMI.THREE.Vector3(0,10,0),updateRegion:false});
+            viewer.load('datas/gltf/DamagedHelmet.gltf',{
+                location:new BIMI.THREE.Vector3(0,10,0),
+                scale:new BIMI.THREE.Vector3(3,3,3),
+                updateRegion:false
+            })
+
             viewer.on(BIMI.ViewerEvent.DBL_CLICK,pickEvent=>{
-                var source = pickEvent.source;
-                if(source === 'bim')
-                {
-                    var pickObjects = pickEvent.data;
-                    var modelId = pickObjects[0].modelId;
-                    var productId = pickObjects[0].productId;
-                    viewer.zoomToProduct(modelId,productId,true);
-                }
+                var pickObjects = pickEvent.data;
+                var modelId = pickObjects[0].modelId;
+                var productId = pickObjects[0].productId;
+                viewer.zoomToProduct(modelId,productId,true);
             })
 
             Prism.highlightAll();

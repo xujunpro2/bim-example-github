@@ -6,17 +6,20 @@
             <br/><span style="color:red">注意：因为Dom转贴图是异步的，所以dom的remove操作在插件内部就完成了，开发者不需要在自己remove这个dom了</span>
             <br/>可通过zoom属性设置是否缩放，默认值为false。
             <br/>受限于当前WebGL能力，贴图清晰度不够完美。
+            <el-button @click="update">改变位置和标签内容</el-button>
         </div>
         
         <div id="containerDiv" >
+
             <div id="hello" class="sprite" >
             　　<span>1#离心机</span>
                 <br/>
                 <img width="36" height="36" src="vue.png"/>
             </div>
+
         </div>
             <pre class="line-numbers"><code class="language-js">#代码示范
- addDom()
+        addLabel()
         {
             var viewer = BIMI.ViewerHelper.getViewer();
             var plugin = viewer.getPlugin('SpriteDomPlugin');
@@ -36,8 +39,8 @@
              * bindData:object 业务绑定数据，可以在pick的时候返回
              * distance:Number 视距
              */
-            plugin.addDom({
-                id:121,
+            plugin.addLabel({
+                id:100,
                 zoom:false,
                 dom:divDom,
                 position:new BIMI.THREE.Vector3(-2,3.7,-4.5),
@@ -45,20 +48,7 @@
                 distance:40
             })
             viewer.isDirty();
-        }   
-        //设置可见性
-        plugin.setVisible(id,visible);
-
-        //三维标记可以通过id remove
-        plugin.removeDom(121);
-
-        //也可以全部清除
-        plugin.removeAll();
-        
-        //dom也可以通过HTML文本创建
-        let myDom = plugin.createDom(HTML字符串);//然后用这个dom去调用plugin.addDom
-
-//和三维标记一样,支持pick事件
+        }  
 </code></pre>
     
     </div>
@@ -75,7 +65,21 @@ export default {
         };
 	},
 	methods: {
-        addDom()
+        update(){
+            let viewer = BIMI.ViewerHelper.getViewer();
+            let plugin = viewer.getPlugin('SpriteDomPlugin'); 
+            //改变100标签的位置
+            plugin.updatePosition(100,new BIMI.THREE.Vector3(-2,6.7,-4.5));
+            //可以拿到之前的dom对象
+            let dom = plugin.getLabelDom(100);
+            //进行dom操作
+            dom.querySelector('#hello span').innerHTML = '修改后的文本'
+            //用修改后的dom更新三维标签
+            plugin.updateContent(100,{
+                dom:dom,
+            })
+        },
+        addLabel()
         {
             var viewer = BIMI.ViewerHelper.getViewer();
             var plugin = viewer.getPlugin('SpriteDomPlugin');
@@ -95,8 +99,8 @@ export default {
              * bindData:object 业务绑定数据，可以在pick的时候返回
              * distance:Number 视距
              */
-            plugin.addDom({
-                id:121,
+            plugin.addLabel({
+                id:100,
                 zoom:false,
                 dom:divDom,
                 position:new BIMI.THREE.Vector3(-2,3.7,-4.5),
@@ -114,7 +118,7 @@ export default {
             viewer.load('datas/冷站/bim.bin');
            
 			viewer.on("loaded", model => {
-                this.addDom(); 
+                this.addLabel(); 
                 
             });
             viewer.on("pick", event => {
@@ -149,10 +153,11 @@ export default {
         border-radius: 5px;
         color: #fff;
         width: 200px;
-        height: 220px;
+        height: 280px;
         font-size: 12px;
         padding: 5px;
         overflow:hidden;
+        z-index: 1;
     }
      .sprite
     {

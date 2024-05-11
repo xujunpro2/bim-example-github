@@ -80,7 +80,7 @@ export default {
             plugin.addCollisionExceptionTypes([-2000023]);
             //设置漫游过程中关注的构件，在靠近这些构件并且视锥以内，会触发插件的'attentionChange'回调,该API必须在start()之前调用才会起效
             plugin.setAttentionProducts([
-                {modelId:1,productId:954641,distance:2}//关注起居室阳台上的小人构件
+                {modelId:1,productId:10954641,distance:2}//关注起居室阳台上的小人构件,小人构件的ID是10954641，当距离小人2米的时候触发事件
             ])
 
             plugin.start();
@@ -111,6 +111,9 @@ export default {
             viewer.load('datas/rac_basic_sample_project/bim.bin');
             viewer.on(BIMI.ViewerEvent.LOADED,model=>{
                 this.setStartCamera();
+            })
+            viewer.on(BIMI.ViewerEvent.PICK,pickEvent=>{
+                console.info(pickEvent)
             })
            
             Prism.highlightAll();

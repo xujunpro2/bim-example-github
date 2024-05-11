@@ -25,28 +25,19 @@ export default {
     mounted(){
         this.$nextTick(()=>{
             var dom = document.getElementById('containerDiv');
-            var viewer = new BIMI.BimViewer(dom,{loading:true});
-            viewer.setBoxShadow();//DIV增加一个阴影效果，只是好看一些，没啥用
+            var viewer = new BIMI.BimViewer(dom,{debug:true});
+
             let toolbar = new BIMI.Toolbar(viewer);
             viewer.load('datas/rac_basic_sample_project/bim.bin');
             viewer.enableDamping(true,0.08)
-			viewer.on("loaded", model => {
-           
-			});
-            viewer.on('pick',(event)=>{
-                //console.info(event);
-                this.modelId = event.data[0].modelId;
-                var product = viewer.getProduct(event.data[0].modelId,event.data[0].productId);
-                console.info(product);
-            })
-            viewer.on('dblclick',(event)=>{
+	
+            //鼠标双击事件回调，聚焦构件
+            viewer.on(BIMI.ViewerEvent.DBL_CLICK,(event)=>{
                 console.info(event.data);
                 viewer.zoomToProduct(event.data[0].modelId,event.data[0].productId,true);
             })
 
-            viewer.on('contextmenu',event=>{
-                console.info(event)
-            })
+
         })
     },
     beforeDestroy() {

@@ -17,11 +17,26 @@
             }
             var option = {
                 repeat:true,//重复播放
-                productData:[{modelId:1,productIds:[{id:42582}]}],
+                modelId:1,
+                productIds:[{id:42582}],
                 y:360,
                 time:2000
             }
-            plugin.ratateXYZ(option);
+            /**
+            * 旋转，以mesh的局部坐标基点(0,0,0)为旋转中心点，
+            * @param {object} option 参数对象
+            * @example
+            * {
+            *      modelId:模型ID
+            *      productIds:构件ID和中心定义数组，例如：[{id:554644,center:center}]，其中center可以不设置
+            *      x: X方向旋转角度 默认0
+            *      y: Y方向旋转角度 默认0
+            *      z: Z方向旋转角度 默认0
+            *      time: 动画执行时长 毫秒,默认0，表示无动画过程
+            *      repeat:重复旋转 默认false
+            * }
+            */
+            plugin.rotateXYZ(option);
             viewer.isDirty();
         },
 </code></pre>
@@ -50,11 +65,12 @@ export default {
             }
             var option = {
                 repeat:true,//重复播放
-                productData:[{modelId:1,productIds:[{id:42582}]}],
+                modelId:1,
+                productIds:[{id:42582}],
                 y:360,
                 time:2000
             }
-            plugin.ratateXYZ(option);
+            plugin.rotateXYZ(option);
             viewer.isDirty();
         },
     },

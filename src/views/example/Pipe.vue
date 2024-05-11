@@ -32,16 +32,16 @@ export default {
         },
 		initView() {
             var dom = document.getElementById('containerDiv');
-            var viewer = new BIMI.BimViewer(dom,{debug:false,enableInstancedMesh:false});
+            var viewer = new BIMI.BimViewer(dom);
 
             viewer.load('datas/大型管廊项目/bim.bin');
             let toolbar = new BIMI.Toolbar(viewer);
             let sun = new BIMI.SunPlugin({position:new BIMI.THREE.Vector3(-250, 300, -50)});
             viewer.addPlugin(sun);
-            viewer.on('loaded',event=>{
+            viewer.on(BIMI.ViewerEvent.LOADED,event=>{
                 this.setOrbit();
             })
-            viewer.on('pick',event=>{
+            viewer.on(BIMI.ViewerEvent.PICK,event=>{
                 // console.info(event);
                 var modelId = event.data[0].modelId;
                 var productId = event.data[0].productId;

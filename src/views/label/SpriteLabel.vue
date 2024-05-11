@@ -4,6 +4,7 @@
             三维标记是真实的三维文本标签。
             <br/>优点是和三维场景融为一体，能被BIM构件遮挡。通过zoom属性，可让标签具备景深特点。
             <br/>缺点是文字清晰度不如二维标记。
+            <el-button @click="update">改变位置和标签内容</el-button>
         </div>
         <div id="containerDiv" ></div>
             <pre class="line-numbers"><code class="language-js">#代码示范
@@ -28,7 +29,7 @@
              * borderColor:'#ffffff' 边框色，默认白色
              * zoom:true/false 是否跟随缩放
              * bindData:object 业务绑定数据，可以在pick的时候返回
-             * distance:Number/null 视距，单位米，相机距离该标签距离<=视距时，标签才可见。默认无视距控制
+             * distance:Number/null 视距，单位米，相机距离该标签距离小于等于视距时，标签才可见。默认无视距控制
              */
             spriteLabelPlugin.addLabel({
                 id:121,
@@ -83,14 +84,37 @@ export default {
         };
 	},
 	methods: {
+        update(){
+            let viewer = BIMI.ViewerHelper.getViewer();
+            let plugin = viewer.getPlugin('SpriteLabelPlugin'); 
+            //改变100标签的位置
+            plugin.updatePosition(100,new BIMI.THREE.Vector3(-2,6.7,-4.5));
+            /**
+             * 修改既有Label的内容dom
+             * @param {*} id lable id
+             * @param {*} options 
+             * @example 数据定义
+             * {
+             *      text: 文本，不设置就使用既有值
+             *      fontSize：字体css，不设置就使用既有值
+             *      fontColor：文字颜色，不设置就使用既有值
+             *      backgroundColor: 标签背景色，不设置就使用既有值
+             *      borderColor:标签边框色，不设置就使用既有值
+             * }
+             */
+            plugin.updateContent(100,{
+                text:'修改后的文本'
+            })
+            //SpriteLabel不提供getLabelDom
+        },
         addLabel()
         {
             var viewer = BIMI.ViewerHelper.getViewer();
-            var spriteLabelPlugin = viewer.getPlugin('SpriteLabelPlugin');
-            if(!spriteLabelPlugin)
+            var plugin = viewer.getPlugin('SpriteLabelPlugin');
+            if(!plugin)
             {
-                spriteLabelPlugin = new BIMI.SpriteLabelPlugin();
-                viewer.addPlugin(spriteLabelPlugin);
+                plugin = new BIMI.SpriteLabelPlugin();
+                viewer.addPlugin(plugin);
             }
             /**
              * 参数说明
@@ -105,8 +129,8 @@ export default {
              * bindData:object 业务绑定数据，可以在pick的时候返回
              * distance:Number/null 视距，单位米，相机距离该标签距离<=视距时，标签才可见。默认无视距控制
              */
-            spriteLabelPlugin.addLabel({
-                id:121,
+            plugin.addLabel({
+                id:100,
                 bindData:{name:'jack'},
                 text:'1#离心机',
                 position:new BIMI.THREE.Vector3(-2,3.7,-4.5),
@@ -115,10 +139,10 @@ export default {
                 backgroundColor:'#485663',
                 borderColor:'#ffffff',
                 zoom:false,
-                distance:30 
+                distance:50 
             })
-            spriteLabelPlugin.addLabel({
-                id:122,
+            plugin.addLabel({
+                id:101,
                 bindData:{name:'tom'},
                 text:'2#离心机',
                 position:new BIMI.THREE.Vector3(1.3,3.7,-4.5),
@@ -180,5 +204,6 @@ export default {
         font-size: 12px;
         padding: 5px;
         overflow:hidden;
+        z-index:1;
     }
 </style>

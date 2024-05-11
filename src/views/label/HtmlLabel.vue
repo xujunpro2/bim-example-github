@@ -4,10 +4,11 @@
             二维标记是采用html div的方式在场景中放置文本标签。
             <br/>优点是文字清晰度高并且始终可见。
             <br/>缺点是因为div没有Z方向坐标，所以缺乏三维感。
+            <el-button @click="update">改变位置和标签内容</el-button>
         </div>
         <div id="containerDiv" ></div>
             <pre class="line-numbers"><code class="language-js">#代码示范
-        addLabel()
+                addLabel()
         {
             var viewer = BIMI.ViewerHelper.getViewer();
             var plugin = viewer.getPlugin('HtmlLabelPlugin');
@@ -43,13 +44,7 @@
                 fontColor:'#fff',
                 backgroundColor:'#485663',
                 fontSize:'14px'
-            })
-
-            //设置label可见性
-            //labelPlugin.setVisible(100,false);
-
-            //彻底移除某个Label
-            //labelPlugin.removeLabel(100)     
+            }) 
             
             //label可以绑定点击事件
             plugin.on('click',function(data){
@@ -71,6 +66,19 @@ export default {
         };
 	},
 	methods: {
+        update(){
+            let viewer = BIMI.ViewerHelper.getViewer();
+            let plugin = viewer.getPlugin('HtmlLabelPlugin'); 
+            //改变100标签的位置
+            plugin.updatePosition(100,new BIMI.THREE.Vector3(-2,6.7,-4.5));
+            //改变100标签的文本
+            plugin.updateContent(100,{
+                text:'修改后的文本'
+            })
+            //也可直接拿到标签对应的dom，随意修改
+            let dom = plugin.getLabelDom(100);
+            console.info(dom);
+        },
         addLabel()
         {
             var viewer = BIMI.ViewerHelper.getViewer();
@@ -107,13 +115,7 @@ export default {
                 fontColor:'#fff',
                 backgroundColor:'#485663',
                 fontSize:'14px'
-            })
-
-            //设置label可见性
-            //labelPlugin.setVisible(100,false);
-
-            //彻底移除某个Label
-            //labelPlugin.removeLabel(100)     
+            }) 
             
             //label可以绑定点击事件
             plugin.on('click',function(data){
@@ -159,9 +161,10 @@ export default {
         border-radius: 5px;
         color: #fff;
         width: 200px;
-        height: 120px;
+        height: 220px;
         font-size: 12px;
         padding: 5px;
         overflow:hidden;
+        z-index: 1;
     }
 </style>

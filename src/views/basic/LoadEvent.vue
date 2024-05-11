@@ -56,8 +56,9 @@ export default {
                 //{model:当前下载完毕的url}
 				this.message += "ondownloaded ->模型下载完毕<br/>"
 			});
-			viewer.on(BIMI.ViewerEvent.LOADED, model => {
-                //{ model: model.name,modelId:model.id }
+			viewer.on(BIMI.ViewerEvent.LOADED, event => {
+                console.info(event)
+                //{ model: event.name,modelId:event.modelId }
 				this.message += "loaded ->模型加载完毕<br/>"
 			});
             Prism.highlightAll();

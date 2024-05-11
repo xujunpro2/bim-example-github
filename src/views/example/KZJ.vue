@@ -18,17 +18,15 @@ export default {
 	methods: {
 		initView() {
             var dom = document.getElementById('containerDiv');
-            var viewer = new BIMI.BimViewer(dom,{streamRender:false});
- 
+            var viewer = new BIMI.BimViewer(dom);
 			viewer.load( 'datas/KZJ整体模型/bim.bin');
             let sun = new BIMI.SunPlugin({position:new BIMI.THREE.Vector3(-250, 100, -50)});
             viewer.addPlugin(sun);
 		
-			viewer.on("loaded", model => {
-                 this.excuteZFighting();
-                 this.setProductStyle();
+			viewer.on(BIMI.ViewerEvent.LOADED, model => {
+                this.setProductStyle();
             });
-            viewer.on('pick',event=>{
+            viewer.on(BIMI.ViewerEvent.PICK,event=>{
                 // console.info(event);
                 var modelId = event.data[0].modelId;
                 var productId = event.data[0].productId;
@@ -46,12 +44,7 @@ export default {
            
 		},
 		
-        //处理zFighting的几个构件
-        excuteZFighting(){
-            let viewer = BIMI.ViewerHelper.getViewer();
-            viewer.zFighting(1,727481);
-            viewer.zFighting(1,844346,true);
-        },
+
         //设置构件样式
         setProductStyle(){
             let viewer = BIMI.ViewerHelper.getViewer();
@@ -114,17 +107,5 @@ export default {
 
 
 <style scoped>
-.bimDiv {
-   background-color: #070f22;
-}
-.bimDiv:after {
-    pointer-events: none;
-    position: absolute;
-    content: '';
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    box-shadow:0 0 200px 50px #000 inset;
-}
+
 </style>
