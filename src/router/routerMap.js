@@ -170,7 +170,12 @@ export const constantRoutes = [
                 component: () => import('@/views/basic/PickFilter'),
                 meta: { title: '构件拾取过滤' }
             },
-           
+            {
+                path: 'rayPoint',
+                name: 'RayPoint',
+                component: () => import('@/views/basic/RayPoint'),
+                meta: { title: '交点拾取' }
+            },
             {
                 path: 'visible',
                 name: 'Visible',

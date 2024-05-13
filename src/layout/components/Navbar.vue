@@ -7,9 +7,11 @@
     />
 
     <breadcrumb class="breadcrumb-container"/>
-
+    
     <div class="right-menu">
-
+      <div class="navbar-icon">
+          技术交流群:796421379
+      </div>
       <!-- <div class="navbar-icon">
         <i class="el-icon-bell"></i>
       </div>
