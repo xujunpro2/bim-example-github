@@ -244,11 +244,17 @@ export const constantRoutes = [
                 meta: { title: '导航图' }
             },
             {
-                path: 'levelMap',
-                name: 'NavigationLevelMap',
-                component: () => import('@/views/basic/NavigationLevelMap'),
-                meta: { title: '楼层导航图' }
+                path: 'screenPrint',
+                name: 'ScreenPrint',
+                component: () => import('@/views/basic/ScreenPrint'),
+                meta: { title: '场景截图' }
             },
+            // {
+            //     path: 'levelMap',
+            //     name: 'NavigationLevelMap',
+            //     component: () => import('@/views/basic/NavigationLevelMap'),
+            //     meta: { title: '楼层导航图' }
+            // },
         ]
     },
     {
